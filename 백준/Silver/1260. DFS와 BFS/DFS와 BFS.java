@@ -54,10 +54,11 @@ public class Main {
                 visited[current]=true;
                 track.add(current);
             }
+            //정렬
             Collections.sort(adj[current]);
 
             // 로직 2
-            // 인접행렬을 하나씩 돌면서! (0번 포도알 없음에 주의)
+            // 인접리스트을 하나씩 돌면서! 
             Collections.reverse(adj[current]);
             for(int ints: adj[current]){
                 if(!visited[ints]){
@@ -78,7 +79,7 @@ public class Main {
             }
 
             // 로직 2
-            // 인접행렬을 하나씩 돌면서! (0번 포도알 없음에 주의)
+            // 인접리스트를 하나씩 돌면서! 
             Collections.sort(adj[current]);
             for(int ints: adj[current]){
                 if(!visitedb[ints]){
