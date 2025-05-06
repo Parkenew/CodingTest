@@ -29,7 +29,7 @@ public class Main {
             for (int j = 0; j < m; j++) {
                 if(drawing[i][j]==1 && !visited[i][j]){
                     draw_count++;
-                    dfs(i,j);
+                    bfs(i,j);
                     max=Math.max(max,count);
                 }
             }
@@ -38,7 +38,7 @@ public class Main {
         System.out.println(sb);
     }
 
-    private static void dfs(int r, int c){
+    private static void bfs(int r, int c){
         visited[r][c]=true;
         count=0;
         q.addLast(new int[]{r,c});
