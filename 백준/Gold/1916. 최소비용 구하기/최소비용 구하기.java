@@ -11,20 +11,20 @@ public class Main {
     static int n,m;
     static ArrayList<Node>[] adj;
     static boolean[] visited;
-    static long[] dist;
-    static long inf=Long.MAX_VALUE;
+    static int[] dist;
+    static int inf=Integer.MAX_VALUE;
     static int startNode;
     static int endNode;
     static class Node implements Comparable<Node>{
-        long distance;
+        int distance;
         int nodeNum;
-        public Node(int nodeNum, long distance) {
+        public Node(int nodeNum, int distance) {
             this.distance = distance;
             this.nodeNum = nodeNum;
         }
         @Override
         public int compareTo(Node o) {
-            return Long.compare(distance, o.distance);
+            return Integer.compare(this.distance, o.distance);
         }
     }
     public static void main(String[] args) throws IOException {
@@ -32,7 +32,7 @@ public class Main {
         m=Integer.parseInt(br.readLine());
         adj=new ArrayList[n+1];
         visited=new boolean[n+1];
-        dist=new long[n+1];
+        dist=new int[n+1];
         for (int i = 0; i < n+1; i++) {
             adj[i]=new ArrayList<>();
             dist[i]=inf;
@@ -42,7 +42,7 @@ public class Main {
             st=new StringTokenizer(br.readLine());
             int start=Integer.parseInt(st.nextToken());
             int end=Integer.parseInt(st.nextToken());
-            long price=Integer.parseInt(st.nextToken());
+            int price=Integer.parseInt(st.nextToken());
             adj[start].add(new Node(end, price));
         }
         st=new StringTokenizer(br.readLine());
@@ -57,15 +57,15 @@ public class Main {
         dist[startNode]=0;
         while (!pq.isEmpty()) {
             Node cur=pq.poll();
-            long distance=cur.distance;
+            int distance=cur.distance;
             int nodeNum=cur.nodeNum;
-            
+
             if(dist[nodeNum]<distance){
                 continue;
             }
             for (Node next : adj[nodeNum]) {
                 int nextNodeNum=next.nodeNum;
-                long nextDistance=next.distance;
+                int nextDistance=next.distance;
                 if(dist[nextNodeNum]>nextDistance+distance){
                     dist[nextNodeNum]=nextDistance+distance;
                     pq.offer(new Node(nextNodeNum, dist[nextNodeNum]));
